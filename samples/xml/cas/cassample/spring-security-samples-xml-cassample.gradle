@@ -1,8 +1,4 @@
-// CAS sample build file
-
-apply plugin: 'war'
-apply plugin: 'jetty'
-apply plugin: 'groovy'
+apply plugin: 'io.spring.convention.spring-sample-war'
 
 def excludeModules = ['spring-security-acl', 'jsr250-api', 'spring-jdbc', 'spring-tx']
 def jettyVersion = '8.1.9.v20130131'
@@ -26,27 +22,27 @@ sourceSets {
 eclipse.classpath.plusConfigurations += [configurations.integrationTestRuntime]
 
 dependencies {
-	providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
+	providedCompile "javax.servlet:javax.servlet-api"
 
 	compile project(':spring-security-core'),
 			project(':spring-security-cas'),
-			"org.jasig.cas.client:cas-client-core:$casClientVersion"
+			"org.jasig.cas.client:cas-client-core"
 
 	runtime project(':spring-security-web'),
 			project(':spring-security-config'),
-			"org.springframework:spring-context-support:$springVersion",
-			"org.slf4j:jcl-over-slf4j:$slf4jVersion",
-			"ch.qos.logback:logback-classic:$logbackVersion",
-			"net.sf.ehcache:ehcache:$ehcacheVersion"
+			"org.springframework:spring-context-support",
+			"org.slf4j:jcl-over-slf4j",
+			"ch.qos.logback:logback-classic",
+			"net.sf.ehcache:ehcache"
 
 	integrationTestCompile project(':spring-security-cas'),
-				   "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion",
-				   "org.gebish:geb-spock:$gebVersion",
-				   'commons-httpclient:commons-httpclient:3.1',
-				   "org.eclipse.jetty:jetty-server:$jettyVersion",
-				   "org.eclipse.jetty:jetty-servlet:$jettyVersion",
-				   "org.codehaus.groovy:groovy:$groovyVersion",
-				   "org.slf4j:jcl-over-slf4j:$slf4jVersion",
+				   "org.seleniumhq.selenium:selenium-htmlunit-driver",
+				   "org.gebish:geb-spock",
+				   'commons-httpclient:commons-httpclient',
+				   "org.eclipse.jetty:jetty-server",
+				   "org.eclipse.jetty:jetty-servlet",
+				   "org.codehaus.groovy:groovy",
+				   "org.slf4j:jcl-over-slf4j",
 				   spockDependencies
 }
 
