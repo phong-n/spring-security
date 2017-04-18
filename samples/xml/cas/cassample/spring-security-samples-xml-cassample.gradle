@@ -124,3 +124,5 @@ gradle.taskGraph.whenReady {graph ->
 def casServer() {
 	tasks.getByPath(':spring-security-samples-xml-casserver:casServer')
 }
+
+integrationTest.enabled = false
